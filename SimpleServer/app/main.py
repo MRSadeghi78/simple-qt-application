@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from .routers import qml_router
 
-app = FastAPI()
+app = FastAPI()  # Create an instance of the FastAPI class.
 
+# Include the qml_router from the routers package to handle routing.
 app.include_router(qml_router.router)
