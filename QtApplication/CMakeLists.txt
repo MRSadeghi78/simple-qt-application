@@ -4,21 +4,14 @@ project(QtApplication VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt5 REQUIRED COMPONENTS Quick)
 
-qt_standard_project_setup(REQUIRES 6.8)
-
-qt_add_executable(appQtApplication
+add_executable(appQtApplication
     main.cpp
 )
 
-qt_add_qml_module(appQtApplication
-    URI QtApplication
-    VERSION 1.0
-    QML_FILES
-        Main.qml
-        RESOURCES resources.qrc
-        RESOURCES resources.qrc
+qt5_add_resources(appQtApplication
+    resources.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -33,7 +26,7 @@ set_target_properties(appQtApplication PROPERTIES
 )
 
 target_link_libraries(appQtApplication
-    PRIVATE Qt6::Quick
+    PRIVATE Qt5::Quick
 )
 
 include(GNUInstallDirs)
