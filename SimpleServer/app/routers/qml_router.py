@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from ..models.item import Item
-import random
+import os
 
 router = APIRouter()
 
@@ -19,9 +19,13 @@ async def read_qml(item: Item):
     Raises:
         HTTPException: 404 error if the specified file is not found.
     """
-    try:
-        with open(item.filename, 'r') as file:
-            content = file.read()
-        return {"content": content}
-    except FileNotFoundError:
+    qml_directory = os.path.join(os.path.dirname(__file__), '../qml_files/')  # Path to the qml directory
+    file_path = os.path.join(qml_directory, item.filename)  # Full file path
+
+    if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="File not found")
+
+    with open(file_path, 'r') as file:
+        content = file.read()
+    
+    return {"content": content}
