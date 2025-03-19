@@ -4,15 +4,19 @@ project(QtApplication VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Find Qt5 with QtQuick
 find_package(Qt5 REQUIRED COMPONENTS Quick)
 
+# Add executable for the Qt application
 add_executable(appQtApplication
-    main.cpp
+    src/main.cpp
+    src/NetworkManager.cpp
 )
 
-qt5_add_resources(appQtApplication
-    resources.qrc
-)
+# # Add QML resources (ensure resources.qrc is set up correctly)
+# qt5_add_resources(appQtApplication
+#     resources.qrc
+# )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
@@ -25,10 +29,14 @@ set_target_properties(appQtApplication PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+target_include_directories(appQtApplication PRIVATE include)
+
+# Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication
     PRIVATE Qt5::Quick
 )
 
+# Optional: Install section (if needed)
 include(GNUInstallDirs)
 install(TARGETS appQtApplication
     BUNDLE DESTINATION .
