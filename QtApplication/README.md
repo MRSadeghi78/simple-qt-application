@@ -50,8 +50,9 @@ Execute the application from the build directory:
 ```
 
 ## Configuring the FastAPI Server
-The application expects a FastAPI server running on http://localhost:15555 serving QML files. Ensure your server is configured to respond to /api/v1/getQML with the appropriate QML content.
 > If you are using your own server to interact with the Qt application, then skip this part.
+
+The application expects a FastAPI server running on http://localhost:15555 serving QML files. Ensure your server is configured to respond to /api/v1/getQML with the appropriate QML content.
 
 ### Step 1: Set up FastAPI
 Install FastAPI and Uvicorn, if not already installed:
