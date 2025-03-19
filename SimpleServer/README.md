@@ -20,6 +20,12 @@ Refer to `requirements.txt` for the complete list of required packages.
 
 Follow these steps to get your development environment set up:
 
+1. Install necessary packages:
+   ```bash
+   sudo apt update
+   sudo apt install python3.12-venv
+   ```
+
 1. Clone the repository:
 
    ```bash
@@ -32,8 +38,12 @@ Follow these steps to get your development environment set up:
    ```bash
    python -m venv venv
    ```
+   Or
+   ```bash
+   python3 -m venv venv
+   ```
 
-3. Activate the virtual environment:
+4. Activate the virtual environment:
 
    - On Windows:
 
@@ -47,7 +57,7 @@ Follow these steps to get your development environment set up:
      source venv/bin/activate
      ```
 
-4. Install the dependencies:
+5. Install the dependencies:
 
    ```bash
    pip install -r requirements.txt
