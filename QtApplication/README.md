@@ -21,7 +21,11 @@ Before you can run this project, ensure you have the following installed on your
 Ensure you have Qt5 and the necessary build tools installed:
 ```bash
 sudo apt update
-sudo apt install qt5-default qt5-qmake qtbase5-dev qtchooser qtbase5-dev-tools build-essential
+sudo apt upgrade
+sudo apt install qt5-default qt5-qmake qtbase5-dev build-essential
+sudo apt install qml-module-qtquick-controls qtwebengine5-dev
+sudo apt install cmake
+sudo apt install qml-module-qtquick-controls2
 ```
 
 ### Step 2: Clone the Repository
