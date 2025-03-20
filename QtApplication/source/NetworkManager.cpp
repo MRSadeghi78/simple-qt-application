@@ -1,4 +1,4 @@
-#include "../include/NetworkManager.h"
+#include "NetworkManager.h"
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QJsonDocument>
@@ -10,7 +10,7 @@ NetworkManager::NetworkManager() {} // Constructor
 
 /**
  * Fetches QML content from a remote server.
- * 
+ *
  * @param manager Reference to QNetworkAccessManager managing network requests.
  * @param filename Name of the file to fetch.
  * @return String containing the QML content.
@@ -45,4 +45,22 @@ QString NetworkManager::fetchQML(const QString& filename) {
 
     reply->deleteLater(); // Cleanup reply object.
     return qmlContent;
+}
+
+void NetworkManager::sendShutdownRequest() {
+    QUrl url("http://localhost:15555/api/shutdown");  // URL for the shutdown endpoint
+    QNetworkRequest request(url);
+    QNetworkReply* reply = manager.get(request);
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    if (reply->error() == QNetworkReply::NoError) {
+        qDebug() << "Server shutdown request sent successfully.";
+    } else {
+        qDebug() << "Failed to send shutdown request:" << reply->errorString();
+    }
+
+    reply->deleteLater();
 }
