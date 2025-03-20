@@ -6,7 +6,9 @@
 
 class TimerManager : public QObject {
     Q_OBJECT  // Make sure this macro is present and correctly placed
-public:
+    Q_PROPERTY(int elapsedTime READ elapsedTime NOTIFY elapsedTimeChanged)
+
+    public:
     explicit TimerManager(QObject *parent = nullptr);
     virtual ~TimerManager();  // Ensure virtual destructor is declared if needed
 

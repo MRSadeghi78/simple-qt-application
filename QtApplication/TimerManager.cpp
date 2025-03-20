@@ -6,6 +6,7 @@ TimerManager::TimerManager(QObject *parent) : QObject(parent), m_elapsedTime(0) 
         m_elapsedTime++;
         emit elapsedTimeChanged();
     });
+    timer->setInterval(1000);
 }
 
 TimerManager::~TimerManager() {
@@ -13,11 +14,15 @@ TimerManager::~TimerManager() {
 }
 
 void TimerManager::startTimer() {
-    timer->start(1000); // Timer ticks every second
+    if (!timer->isActive()) {
+        timer->start();
+    }
 }
 
 void TimerManager::stopTimer() {
-    timer->stop();
+    if (timer->isActive()) {
+        timer->stop();
+    }
 }
 
 int TimerManager::elapsedTime() const {
