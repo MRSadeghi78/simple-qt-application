@@ -35,7 +35,7 @@ target_include_directories(appQtApplication PRIVATE headers)
 
 # Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication
-    Qt5::Core
+    PRIVATE Qt5::Core
     PRIVATE Qt5::Quick
 )
 
