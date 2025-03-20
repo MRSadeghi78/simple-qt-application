@@ -14,9 +14,9 @@ find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Add executable for the Qt application
 add_executable(appQtApplication
-    source/main.cpp
-    source/NetworkManager.cpp
-    source/TimerManager.cpp
+    main.cpp
+    NetworkManager.cpp
+    TimerManager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -30,7 +30,6 @@ set_target_properties(appQtApplication PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_include_directories(appQtApplication PRIVATE headers)
 
 # Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication

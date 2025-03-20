@@ -1,4 +1,4 @@
-#include "../headers/TimerManager.h"
+#include "TimerManager.h"
 
 TimerManager::TimerManager(QObject *parent) : QObject(parent), m_elapsedTime(0) {
     timer = new QTimer(this);

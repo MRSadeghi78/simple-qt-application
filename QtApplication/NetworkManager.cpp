@@ -1,4 +1,4 @@
-#include "../headers/NetworkManager.h"
+#include "NetworkManager.h"
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QJsonDocument>
