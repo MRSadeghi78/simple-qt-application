@@ -16,7 +16,7 @@ add_executable(appQtApplication
     source/main.cpp
     source/NetworkManager.cpp
     source/ApplicationManager.cpp
-    source/TimeManager.cpp
+    source/TimerManager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
