@@ -5,18 +5,17 @@
 #include <QTimer>
 
 class TimerManager : public QObject {
-    Q_OBJECT
-    Q_PROPERTY(int elapsedTime READ elapsedTime NOTIFY elapsedTimeChanged)
-
+    Q_OBJECT  // Make sure this macro is present and correctly placed
 public:
     explicit TimerManager(QObject *parent = nullptr);
+    virtual ~TimerManager() override;  // Ensure virtual destructor is declared if needed
 
     Q_INVOKABLE void startTimer();
     Q_INVOKABLE void stopTimer();
     int elapsedTime() const;
 
 signals:
-    void elapsedTimeChanged();
+    void elapsedTimeChanged();  // Signal must be declared in this section
 
 private:
     QTimer* timer;

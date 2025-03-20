@@ -1,4 +1,4 @@
-#include "TimerManager.h"
+#include "../headers/TimerManager.h"
 
 TimerManager::TimerManager(QObject *parent) : QObject(parent), m_elapsedTime(0) {
     timer = new QTimer(this);
@@ -6,6 +6,10 @@ TimerManager::TimerManager(QObject *parent) : QObject(parent), m_elapsedTime(0) 
         m_elapsedTime++;
         emit elapsedTimeChanged();
     });
+}
+
+TimerManager::~TimerManager() {
+    // Cleanup code if necessary
 }
 
 void TimerManager::startTimer() {
