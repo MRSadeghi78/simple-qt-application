@@ -7,16 +7,12 @@ ApplicationWindow {
     height: 480
     title: "Timer Example"
 
-    Timer {
-    id: timerManager
-}
-
     Column {
         spacing: 20
         Button {
-            text: !timerManager.running ? "Start" : "Stop"
+            text: !timerManager.isRunning ? "Start" : "Stop"
             onClicked: {
-                if (timerManager.running) {
+                if (timerManager.isRunning) {
                     timerManager.stopTimer();
                 } else {
                     timerManager.startTimer();

@@ -16,13 +16,19 @@ TimerManager::~TimerManager() {
 void TimerManager::startTimer() {
     if (!timer->isActive()) {
         timer->start();
+        emit runningChanged(true);
     }
 }
 
 void TimerManager::stopTimer() {
     if (timer->isActive()) {
         timer->stop();
+        emit runningChanged(false);
     }
+}
+
+bool TimerManager::isRunning() const {
+    return timer->isActive();
 }
 
 int TimerManager::elapsedTime() const {
