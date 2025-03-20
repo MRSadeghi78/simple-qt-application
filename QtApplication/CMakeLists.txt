@@ -2,10 +2,12 @@ cmake_minimum_required(VERSION 3.16)
 
 project(QtApplication VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Qt5 with QtQuick
 find_package(Qt5 REQUIRED COMPONENTS Quick)
+find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Add executable for the Qt application
 add_executable(appQtApplication
