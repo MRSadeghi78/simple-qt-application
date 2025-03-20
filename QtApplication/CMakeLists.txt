@@ -10,6 +10,7 @@ set(CMAKE_AUTORCC ON)
 
 # Find Qt5 with QtQuick
 find_package(Qt5 REQUIRED COMPONENTS Quick)
+find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Add executable for the Qt application
 add_executable(appQtApplication
@@ -34,6 +35,7 @@ target_include_directories(appQtApplication PRIVATE headers)
 
 # Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication
+    Qt5::Core
     PRIVATE Qt5::Quick
 )
 
