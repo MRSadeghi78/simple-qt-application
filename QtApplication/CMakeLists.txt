@@ -2,22 +2,15 @@ cmake_minimum_required(VERSION 3.16)
 
 project(QtApplication VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
 
 # Find Qt5 with QtQuick
 find_package(Qt5 REQUIRED COMPONENTS Quick)
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 # Add executable for the Qt application
 add_executable(appQtApplication
     source/main.cpp
     source/NetworkManager.cpp
-    source/ApplicationManager.cpp
-    source/TimerManager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -35,7 +28,6 @@ target_include_directories(appQtApplication PRIVATE headers)
 
 # Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication
-    PRIVATE Qt5::Core
     PRIVATE Qt5::Quick
 )
 
