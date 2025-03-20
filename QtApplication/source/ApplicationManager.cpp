@@ -1,4 +1,4 @@
-#include "ApplicationManager.h"
+#include "../headers/ApplicationManager.h"
 #include <QCoreApplication>
 
 ApplicationManager::ApplicationManager(QObject *parent) : QObject(parent) {

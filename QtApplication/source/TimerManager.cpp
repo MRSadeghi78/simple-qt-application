@@ -1,4 +1,4 @@
-#include "TimerManager.h"
+#include "../headers/TimerManager.h"
 
 /**
  * Constructs the TimerManager object and initializes the internal QTimer.
