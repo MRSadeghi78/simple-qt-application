@@ -16,8 +16,14 @@ cd SimpleServer
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-# Consider using & at the end if you want to run in the background or use a terminal multiplexer like tmux
-uvicorn app.main:app --reload --host 0.0.0.0 --port 15555 &
+
+# Check if port 15555 is already in use
+if lsof -i :15555; then
+    echo "Port 15555 is already in use. FastAPI server will not start."
+else
+    # Run the server if the port is not in use
+    uvicorn app.main:app --reload --host 0.0.0.0 --port 15555 &
+fi
 
 # Setup Qt Application
 echo "Setting up Qt application..."
