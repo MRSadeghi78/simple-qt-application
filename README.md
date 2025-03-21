@@ -26,6 +26,8 @@ This project demonstrates a integration between a Qt C++ application and a FastA
 
 ## Installation Guide
 
+> Caution: The following instructions developed and tested on the Ubuntu 24.04 and might not work on other operating systems.
+
 ### Automated Installation Using Script
 1. Clone the project and go to the project directory:
     ```bash
