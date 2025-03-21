@@ -7,7 +7,7 @@
 class TimerManager : public QObject {
     Q_OBJECT  // Make sure this macro is present and correctly placed
     Q_PROPERTY(int elapsedTime READ elapsedTime NOTIFY elapsedTimeChanged)
-    Q_Property(bool running READ isRunning NOTIFY runningChanged)
+    Q_PROPERTY(bool running READ isRunning NOTIFY runningChanged)
 
     public:
     explicit TimerManager(QObject *parent = nullptr);
@@ -20,7 +20,7 @@ class TimerManager : public QObject {
 
 signals:
     void elapsedTimeChanged();  // Signal must be declared in this section
-    void runningChanged(bool isRunning)
+    void runningChanged(bool isRunning);
 
 private:
     QTimer* timer;

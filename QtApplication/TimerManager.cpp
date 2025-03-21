@@ -10,7 +10,7 @@ TimerManager::TimerManager(QObject *parent) : QObject(parent), m_elapsedTime(0) 
 }
 
 TimerManager::~TimerManager() {
-    // Cleanup code if necessary
+    timer->stop();
 }
 
 void TimerManager::startTimer() {
