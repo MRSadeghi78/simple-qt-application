@@ -4,7 +4,7 @@ import asyncio
 router = APIRouter()
 
 
-@router.post("/api/shutdown")
-async def shutdown(item: Item):
+@router.get("/api/shutdown")
+async def shutdown():
     loop = asyncio.get_event_loop()
     loop.stop()
