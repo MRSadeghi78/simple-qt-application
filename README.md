@@ -28,37 +28,55 @@ This project demonstrates a integration between a Qt C++ application and a FastA
 
 ### Setting Up the FastAPI Server
 
-1. Clone the repository and enter project directory:
+1. Install necessary packages:
+   ```bash
+   sudo apt update
+   sudo apt install python3.12-venv
+   ```
+
+2. Clone the repository and enter project directory:
    ```bash
    git clone https://github.com/MRSadeghi78/simple-qt-application.git
    cd simple-qt-application/SimpleServer
    ```
 
-2. Create and activate a virtual environment:
+3. Create and activate a virtual environment:
    ```bash
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. Install dependencies:
+4. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Run the server:
+5. Run the server:
    ```bash
    uvicorn app.main:app --reload --host 0.0.0.0 --port 15555
    ```
 
 ### Setting Up the Qt Application
 
-1. Clone the Qt project repository and enter project directory:
+1. Install Qt5 and Necessary Tools:
+    ```bash
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install qt5-default qt5-qmake qtbase5-dev build-essential
+    sudo apt install qml-module-qtquick-controls qtwebengine5-dev
+    sudo apt install cmake
+    sudo apt install qml-module-qtquick-controls2
+    sudo apt-get install libusb-1.0-0-dev
+    sudo apt-get install pkg-config
+    ```
+
+2. Clone the Qt project repository and enter project directory:
    ```bash
    git clone https://github.com/MRSadeghi78/simple-qt-application.git //skip this part if you have already cloned the repository in the previous steps
    cd simple-qt-application/QtApplication
    ```
 
-2. Build the project:
+3. Build the project:
    ```bash
    mkdir build
    cd build
@@ -66,7 +84,7 @@ This project demonstrates a integration between a Qt C++ application and a FastA
    make
    ```
 
-3. Run the application:
+4. Run the application:
    ```bash
    ./appQtApplication
    ```
