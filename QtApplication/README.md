@@ -26,6 +26,8 @@ sudo apt install qt5-default qt5-qmake qtbase5-dev build-essential
 sudo apt install qml-module-qtquick-controls qtwebengine5-dev
 sudo apt install cmake
 sudo apt install qml-module-qtquick-controls2
+sudo apt-get install libusb-1.0-0-dev
+sudo apt-get install pkg-config
 ```
 
 ### Step 2: Clone the Repository
