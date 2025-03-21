@@ -44,5 +44,13 @@ ApplicationWindow {
                 appManager.exitApplication()
             }
         }
+
+        Button {
+            text: "List USB Devices"
+            onClicked: {
+                var devices = usbManager.listUSBDevices();
+                console.log(devices); // Adjust how you want to display these
+            }
+        }
     }
 }
