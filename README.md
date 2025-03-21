@@ -26,6 +26,21 @@ This project demonstrates a integration between a Qt C++ application and a FastA
 
 ## Installation Guide
 
+### Automated Installation Using Script
+1. Clone the project and go to the project directory:
+    ```bash
+    git clone https://github.com/MRSadeghi78/simple-qt-application.git
+    cd simple-qt-application
+    ```
+2. Run the script to setup the application automatically:
+    ```bash
+    chmod +x setup_script.sh
+    ./setup_script.sh
+    ```
+
+## Manual Installation
+Follow these steps if you prefer to setup the project manually and step by step:
+
 ### Setting Up the FastAPI Server
 
 1. Install necessary packages:
