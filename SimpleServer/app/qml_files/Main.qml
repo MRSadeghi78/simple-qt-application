@@ -12,9 +12,9 @@ ApplicationWindow {
         anchors.centerIn: parent
         spacing: 20
         Button {
-            text: !timerManager.isRunning ? "Start" : "Stop"
+            text: !timerManager.running ? "Start" : "Stop"
             onClicked: {
-                if (timerManager.isRunning) {
+                if (timerManager.running) {
                     timerManager.stopTimer();
                 } else {
                     timerManager.startTimer();
