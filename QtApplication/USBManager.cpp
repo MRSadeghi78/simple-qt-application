@@ -9,8 +9,8 @@ USBManager::~USBManager() {
     libusb_exit(NULL);
 }
 
-QList<USBDevice> USBManager::listUSBDevices() {
-    QList<USBDevice> devices;
+QString USBManager::listUSBDevices() {
+    QString result;
     libusb_device **list;
     ssize_t count = libusb_get_device_list(NULL, &list);
 
@@ -19,14 +19,13 @@ QList<USBDevice> USBManager::listUSBDevices() {
         libusb_device_descriptor desc;
         libusb_get_device_descriptor(device, &desc);
 
-        USBDevice usbDevice;
-        usbDevice.vendor = QString::number(desc.idVendor);
-        usbDevice.model = QString::number(desc.idProduct);
-        usbDevice.location = QString("Bus %1 Device %2").arg(libusb_get_bus_number(device)).arg(libusb_get_device_address(device));
+        QString vendor = QString::number(desc.idVendor, 16).toUpper();  // Display vendor ID in hexadecimal
+        QString model = QString::number(desc.idProduct, 16).toUpper();  // Display model ID in hexadecimal
+        QString location = QString("Bus %1 Device %2").arg(libusb_get_bus_number(device)).arg(libusb_get_device_address(device));
 
-        devices.append(usbDevice);
+        result += QString("Vendor: %1, Model: %2, Location: %3\n").arg(vendor, model, location);
     }
 
-    libusb_free_device_list(list, 1);
-    return devices;
+    libusb_free_device_list(list, 1);  // Free the device list after processing
+    return result.trimmed();  // Remove the last newline character
 }

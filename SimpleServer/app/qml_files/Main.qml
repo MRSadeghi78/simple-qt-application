@@ -48,9 +48,15 @@ ApplicationWindow {
         Button {
             text: "List USB Devices"
             onClicked: {
-                var devices = usbManager.listUSBDevices();
-                console.log(devices); // Adjust how you want to display these
+                deviceText.text = usbManager.listUSBDevices();  // Update the Text element with the device list
             }
+        }
+
+        Text {
+            id: deviceText
+            text: ""
+            width: parent.width - 20  // Use some padding
+            wrapMode: Text.WordWrap  // Ensure the text wraps if too long
         }
     }
 }
