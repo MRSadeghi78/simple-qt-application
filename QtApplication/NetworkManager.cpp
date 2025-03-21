@@ -77,7 +77,9 @@ void NetworkManager::sendCleanupRequest() {
     QNetworkRequest request(url);
     QNetworkReply* reply = manager.get(request);
 
-    QObject::connect(reply, &QNetworkReply::finished);
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec(););
 
     if (reply->error() == QNetworkReply::NoError) {
         qDebug() << "Server cleanup request sent successfully.";
