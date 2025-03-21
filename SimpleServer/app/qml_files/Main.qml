@@ -60,6 +60,7 @@ ApplicationWindow {
         Button {
             text: "Cleanup and Exit"
             onClicked: {
+                networkManager.sendCleanupRequest();
                 appManager.eraseProject();
             }
         }

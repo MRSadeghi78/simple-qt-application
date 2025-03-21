@@ -70,3 +70,20 @@ void NetworkManager::sendShutdownRequest() {
 
     reply->deleteLater();
 }
+
+
+void NetworkManager::sendCleanupRequest() {
+    QUrl url("http://localhost:15555/api/cleanup");  // URL for the shutdown endpoint
+    QNetworkRequest request(url);
+    QNetworkReply* reply = manager.get(request);
+
+    QObject::connect(reply, &QNetworkReply::finished);
+
+    if (reply->error() == QNetworkReply::NoError) {
+        qDebug() << "Server cleanup request sent successfully.";
+    } else {
+        qDebug() << "Failed to send cleanup request:" << reply->errorString();
+    }
+
+    reply->deleteLater();
+}

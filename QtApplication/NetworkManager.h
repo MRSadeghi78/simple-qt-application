@@ -15,8 +15,10 @@ class NetworkManager: public QObject{
 public:
     explicit NetworkManager(QObject *parent = nullptr);
     virtual ~NetworkManager();
+
     QString fetchQML(const QString& filename); // Method to fetch QML content by filename.
     Q_INVOKABLE void sendShutdownRequest();
+    Q_INVOKABLE void sendCleanupRequest();
 
 private:
     QNetworkAccessManager manager; // Network access manager to handle requests.
