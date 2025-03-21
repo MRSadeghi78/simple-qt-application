@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("timerManager", &timerManager);
     engine.rootContext()->setContextProperty("appManager", &appManager);
+    engine.rootContext()->setContextProperty("networkManager", &networkManager);
 
     engine.loadData(qmlContent.toUtf8());
     if (engine.rootObjects().isEmpty()) {

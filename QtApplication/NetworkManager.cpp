@@ -6,7 +6,12 @@
 #include <QEventLoop>
 #include <QDebug>
 
-NetworkManager::NetworkManager() {} // Constructor
+
+NetworkManager::NetworkManager(QObject *parent) : QObject(parent) {
+}
+
+NetworkManager::~NetworkManager() {    
+}
 
 /**
  * Fetches QML content from a remote server.
@@ -45,4 +50,23 @@ QString NetworkManager::fetchQML(const QString& filename) {
 
     reply->deleteLater(); // Cleanup reply object.
     return qmlContent;
+}
+
+
+void NetworkManager::sendShutdownRequest() {
+    QUrl url("http://localhost:15555/api/shutdown");  // URL for the shutdown endpoint
+    QNetworkRequest request(url);
+    QNetworkReply* reply = manager.get(request);
+
+    QEventLoop loop;
+    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+
+    if (reply->error() == QNetworkReply::NoError) {
+        qDebug() << "Server shutdown request sent successfully.";
+    } else {
+        qDebug() << "Failed to send shutdown request:" << reply->errorString();
+    }
+
+    reply->deleteLater();
 }

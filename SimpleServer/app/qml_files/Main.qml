@@ -40,6 +40,7 @@ ApplicationWindow {
         Button {
             text: "Exit Application"
             onClicked: {
+                networkManager.sendShutdownRequest();
                 appManager.exitApplication()
             }
         }
