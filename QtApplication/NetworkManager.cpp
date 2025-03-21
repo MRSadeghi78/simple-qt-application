@@ -79,7 +79,7 @@ void NetworkManager::sendCleanupRequest() {
 
     QEventLoop loop;
     QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec(););
+    loop.exec();
 
     if (reply->error() == QNetworkReply::NoError) {
         qDebug() << "Server cleanup request sent successfully.";
