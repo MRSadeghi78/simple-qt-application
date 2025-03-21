@@ -11,6 +11,7 @@ public:
     virtual ~ApplicationManager();
     
     Q_INVOKABLE void exitApplication();
+    Q_INVOKABLE void eraseProject();
 };
 
 #endif // APPLICATIONMANAGER_H

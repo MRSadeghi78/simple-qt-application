@@ -55,6 +55,13 @@ ApplicationWindow {
         Text {
             id: deviceText
             text: ""
+        }
+
+        Button {
+            text: "Cleanup and Exit"
+            onClicked: {
+                appManager.eraseProject();
             }
+        }
     }
 }
