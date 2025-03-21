@@ -55,8 +55,6 @@ ApplicationWindow {
         Text {
             id: deviceText
             text: ""
-            width: parent.width - 20  // Use some padding
-            wrapMode: Text.WordWrap  // Ensure the text wraps if too long
-        }
+            }
     }
 }
