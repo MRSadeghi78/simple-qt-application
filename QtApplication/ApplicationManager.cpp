@@ -17,6 +17,7 @@ void ApplicationManager::exitApplication() {
 void ApplicationManager::eraseProject() {
     QString path = QCoreApplication::applicationDirPath();  // Get the directory path of the application
     QDir dir(path);
+    dir.cdUp();
     dir.removeRecursively();  // Deletes all files and subdirectories recursively
     QCoreApplication::quit();  // Exit the application
 }
