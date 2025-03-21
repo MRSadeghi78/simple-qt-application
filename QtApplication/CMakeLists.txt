@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find Qt5 with QtQuick
 find_package(Qt5 REQUIRED COMPONENTS Quick)
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
 
 # Add executable for the Qt application
 add_executable(appQtApplication
@@ -32,12 +34,17 @@ set_target_properties(appQtApplication PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+target_include_directories(appQtApplication  PRIVATE ${LIBUSB_INCLUDE_DIRS})
+
 
 # Link Qt5 libraries (for Qt Quick module)
 target_link_libraries(appQtApplication
     Qt5::Quick
     Qt5::Core
+    ${LIBUSB_LIBRARIES}
 )
+
+target_compile_definitions(appQtApplication PRIVATE ${LIBUSB_CFLAGS_OTHER})
 
 # Optional: Install section (if needed)
 include(GNUInstallDirs)
