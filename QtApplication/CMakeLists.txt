@@ -1,20 +1,24 @@
+# Minimum CMake version requirement
 cmake_minimum_required(VERSION 3.16)
 
+# Project information
 project(QtApplication VERSION 0.1 LANGUAGES CXX)
 
+# Automatically handle the Qt moc preprocessor, ui files, and resource files
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find Qt5 with QtQuick
-find_package(Qt5 REQUIRED COMPONENTS Quick)
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+# Find necessary Qt5 components
+find_package(Qt5 REQUIRED COMPONENTS Core Quick)
+
+# Locate and configure the libusb package
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
 
-# Add executable for the Qt application
+# Define the executable and list all associated source files
 add_executable(appQtApplication
     main.cpp
     NetworkManager.cpp
@@ -23,30 +27,28 @@ add_executable(appQtApplication
     USBManager.cpp
 )
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
+# Set properties for MacOSX Bundle and Windows executable
 set_target_properties(appQtApplication PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appQtApplication
+    MACOSX_BUNDLE TRUE
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
 
-target_include_directories(appQtApplication  PRIVATE ${LIBUSB_INCLUDE_DIRS})
+# Include directories for libusb
+target_include_directories(appQtApplication PRIVATE ${LIBUSB_INCLUDE_DIRS})
 
-
-# Link Qt5 libraries (for Qt Quick module)
+# Link the application with Qt5 and libusb libraries
 target_link_libraries(appQtApplication
     Qt5::Quick
     Qt5::Core
     ${LIBUSB_LIBRARIES}
 )
 
+# Add definitions from pkg-config for libusb
 target_compile_definitions(appQtApplication PRIVATE ${LIBUSB_CFLAGS_OTHER})
 
-# Optional: Install section (if needed)
+# Specify installation rules
 include(GNUInstallDirs)
 install(TARGETS appQtApplication
     BUNDLE DESTINATION .
