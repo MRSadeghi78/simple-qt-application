@@ -9,7 +9,7 @@ class TimerManager : public QObject {
     Q_PROPERTY(int elapsedTime READ elapsedTime NOTIFY elapsedTimeChanged)
     Q_PROPERTY(bool running READ isRunning NOTIFY runningChanged)
 
-    public:
+public:
     explicit TimerManager(QObject *parent = nullptr);
     virtual ~TimerManager();  // Ensure virtual destructor is declared if needed
 

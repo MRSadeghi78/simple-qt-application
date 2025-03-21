@@ -36,5 +36,12 @@ ApplicationWindow {
 
             }
         }
+
+        Button {
+            text: "Exit Application"
+            onClicked: {
+                appManager.exitApplication()
+            }
+        }
     }
 }

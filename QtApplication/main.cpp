@@ -1,5 +1,6 @@
 #include "NetworkManager.h"
 #include "TimerManager.h"
+#include "ApplicationManager.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QDebug>
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
 
     NetworkManager networkManager; // Create an instance of NetworkManager to handle network operations.
     TimerManager timerManager;
+    ApplicationManager appManager;
     
     QString qmlContent = networkManager.fetchQML("Main.qml");
 
@@ -26,6 +28,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("timerManager", &timerManager);
+    engine.rootContext()->setContextProperty("appManager", &appManager);
 
     engine.loadData(qmlContent.toUtf8());
     if (engine.rootObjects().isEmpty()) {
