@@ -6,13 +6,13 @@ set -e
 # Update and install dependencies for both FastAPI and Qt
 echo "Updating system and installing required packages..."
 sudo apt update && sudo apt upgrade -y
-sudo apt install python3.12-venv qt5-default qt5-qmake qtbase5-dev build-essential \
+sudo apt install python3.12-venv qt5-qmake qtbase5-dev build-essential \
                  qml-module-qtquick-controls qtwebengine5-dev cmake \
                  qml-module-qtquick-controls2 libusb-1.0-0-dev pkg-config -y
 
 # Setup FastAPI Server
 echo "Setting up FastAPI server..."
-cd simple-qt-application/SimpleServer
+cd SimpleServer
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
